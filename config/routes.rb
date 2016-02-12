@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :comics
 
+  get "/pages/:page" => "pages#show"  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
