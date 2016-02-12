@@ -11,6 +11,14 @@
  * file per style scope.
  */
 
+//Import bootstrap-sprockets
 @import "bootstrap-sprockets";
+
+// Import flatly variables
+@import "bootswatch/flatly/variables";
+
+// Bootstrap
 @import "bootstrap";
 
+// Bootswatch style
+@import "bootswatch/flatly/bootswatch";
