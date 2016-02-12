@@ -52,3 +52,5 @@ group :production do
 end
 
 gem "rspec-rails", :group => [:development, :test]
+
+gem "puma"
