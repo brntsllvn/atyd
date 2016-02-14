@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body class='text-center'>
 
   <h1>Adventures of Ace the Yellow Dog</h1>
 
@@ -22,12 +22,9 @@
             
       </div>
 
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">              
         <ul class="nav navbar-nav">
-          <li><%= link_to icon('fa fa-shopping-cart fa-3x'), page: "about" %></li>    
-        </ul>
-              
-        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to icon('fa fa-shopping-cart fa-3x'), page: "shop" %></li> 
           <li><%= link_to icon('fa fa-info-circle fa-3x'), page: "about" %></li>
           <li><%= link_to icon('fa fa-envelope-o fa-3x'), page: "contact" %></li>
         </ul>

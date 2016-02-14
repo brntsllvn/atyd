@@ -21,3 +21,17 @@
 @import "bootswatch/flatly/bootswatch";
 
 @import "font-awesome";
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-toggle {
+  border: transparent
+}

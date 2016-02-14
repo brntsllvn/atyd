@@ -9,8 +9,8 @@
         <div><%= image_tag comic.pic %></div>
         <h4><%= comic.release_date %></h4>
       
-        <%= link_to 'Show', comic %>
-        <%= link_to 'Edit', edit_comic_path(comic) %>
+        <%= link_to icon('fa fa-eye fa-3x'), comic %>
+        <%= link_to icon('fa fa-pencil fa-3x'), edit_comic_path(comic) %>
         <%= link_to icon('fa fa-trash fa-3x'), comic, method: :delete, data: { confirm: 'Are you sure?' } %>
 
       </div>
