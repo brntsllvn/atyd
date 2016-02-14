@@ -7,11 +7,11 @@ class ComicUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [50, 50]
+  process resize_to_fit: [1200, nil]
 
-  version :thumb do
-    process resize_to_fill: [15,15]
-  end
+  # version :thumb do
+  #  process resize_to_fill: [15,15]
+  # end
 
   # Choose what kind of storage to use for this uploader:
   storage :aws
