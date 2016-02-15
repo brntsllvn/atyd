@@ -24,9 +24,7 @@
 
       <div class="collapse navbar-collapse" id="navbar-collapse-1">              
         <ul class="nav navbar-nav">
-          <li><%= link_to icon('fa fa-shopping-cart fa-3x'), page: "shop" %></li> 
-          <li><%= link_to icon('fa fa-info-circle fa-3x'), page: "about" %></li>
-          <li><%= link_to icon('fa fa-envelope-o fa-3x'), page: "contact" %></li>
+          <%= render "shared/navlinks" %>
         </ul>
       
       </div>
@@ -34,6 +32,13 @@
   </nav>
 
 <%= yield %>
+
+  <div class="footer">
+    <hr>
+    <ul class="list-inline">
+      <%= render "shared/navlinks" %>
+    </ul>
+  </div>
 
 </body>
 
