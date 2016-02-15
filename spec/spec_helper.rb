@@ -89,4 +89,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  
+  # clean up after specs requiring an attachment
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads"])
+  end
 end
