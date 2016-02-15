@@ -2,12 +2,10 @@
 
 class ComicUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [1200, nil]
+  process resize_to_fit: [1000, nil]
+  # process quality: 100
 
   # version :thumb do
   #  process resize_to_fill: [15,15]

@@ -19,6 +19,6 @@ describe ComicUploader do
   end
 
   it "resizes the image" do
-    expect(@uploader).to have_dimensions(1200, 1200)
+    expect(@uploader).to have_dimensions(1000, 1000)
   end
 end   
