@@ -7,7 +7,7 @@
       <div>
         <h2><%= comic.title %></h2>
         <div><%= image_tag comic.pic %></div>
-        <h4><%= comic.release_date %></h4>
+        <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
       
         <%= link_to icon('fa fa-eye fa-3x'), comic %>
         <%= link_to icon('fa fa-pencil fa-3x'), edit_comic_path(comic) %>
