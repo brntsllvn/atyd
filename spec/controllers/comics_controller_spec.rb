@@ -67,6 +67,10 @@ RSpec.describe ComicsController, type: :controller do
       post :create, comic: attributes_for(comic)
     end
 
+    before :each do
+      ActionMailer::Base.deliveries = []
+    end
+
     context "with valid params" do
       it "creates a new Comic" do
         expect { post_comic(:comic) }.to change(Comic, :count).by(1)
@@ -75,6 +79,11 @@ RSpec.describe ComicsController, type: :controller do
       it "assigns a newly created comic as @comic" do
         post_comic(:comic)
         expect(assigns(:comic)).to be_a(Comic)
+      end
+
+      it "queues the comic for email delivery" do
+        post_comic(:comic)
+        expect(ActionMailer::Base.deliveries.count).to eq 1
       end
 
       it "redirects to the created comic" do
