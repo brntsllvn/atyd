@@ -4,6 +4,9 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
+    gibbon = Gibbon::Request.new
+    @lists = gibbon.lists("fd3fb2285a").members.retrieve(params: {"fields": "members.email_address"})
+
     @comics = Comic.all
   end
 

@@ -36,6 +36,9 @@ gem "mini_magick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# mailchimp api wrapper
+gem 'gibbon', '~> 2.2', '>= 2.2.1'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
