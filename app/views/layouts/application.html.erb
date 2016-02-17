@@ -2,14 +2,14 @@
 <html>
 <head>
   <title>Atyd</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
 <body class='text-center'>
 
-  <div><%= image_tag 'pup_head.jpeg', class: 'banner-image' %></div>
+  <div><%= link_to image_tag('pup_head.jpeg', class: 'banner-image'), root_path %></div>
   <h1><%= link_to "Adventures of Ace the Yellow Dog", root_path %></h1>
 
   <nav class="navbar navbar-default">
