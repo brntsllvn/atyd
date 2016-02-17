@@ -4,9 +4,8 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-    gibbon = Gibbon::Request.new
-    @lists = gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members.retrieve(params: {"fields": "members.email_address"})
-
+    # gibbon = Gibbon::Request.new
+    # @lists = gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members.retrieve(params: {"fields": "members.email_address"})
     @comics = Comic.all
   end
 
