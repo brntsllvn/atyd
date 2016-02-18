@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'comics#index'
   
   resources :comics
+  resources :users
 
   get "/pages/:page" => "pages#show"  
 

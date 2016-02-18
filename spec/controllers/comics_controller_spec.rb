@@ -8,7 +8,7 @@ RSpec.describe ComicsController, type: :controller do
       get :index
     end
 
-    it "assigns all comics as @comics" do
+    it "assigns all comics to @comics" do
       expect(assigns(:comics)).to eq [@comic]
     end
 
