@@ -18,9 +18,31 @@
 #     end
 
 #     it "returns test list" do
-#       test_list = @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).retrieve 
-#       expect(test_list['name']).to eq "rails list"
+#       list = @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).retrieve 
+#       expect(list['name']).to eq "rails list"
+#       num_members = list['stats']['member_count']
 #     end
-#   end
+    
+#     it "adds a user to the test list" do 
+#       @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members.create(
+#         body: 
+#         {email_address: "bbb@bar.com", 
+#           status: "subscribed", 
+#           merge_fields: {FNAME: "First Name", LNAME: "Last Name"}
+#         })
 
+#       list = @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).retrieve 
+#       num_members = list['stats']['member_count']
+#       expect(num_members).to eq 1      
+
+#       @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members("bbb@bar.com").update(
+#         body: { status: "unsubscribed" })
+
+#       list = @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).retrieve 
+#       num_members = list['stats']['member_count']
+
+#       expect(num_members).to eq 0
+#     end
+
+#   end
 # end
