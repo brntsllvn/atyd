@@ -61,6 +61,7 @@ group :development do
   gem 'spring'
   gem 'guard-rspec', require: false
   gem 'guard-livereload', '~> 2.5', require: false
+  gem 'pry-rails'
 end
 
 group :production do
