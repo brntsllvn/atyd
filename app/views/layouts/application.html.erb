@@ -9,7 +9,10 @@
 
 <body class='text-center'>
 
-  <div><%= link_to image_tag('pup_head.jpeg', class: 'banner-image'), root_path %></div>
+  <div>
+    <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/acetheyellowdog/uploads/comic/pic/head.jpeg', 
+        class: 'banner-image'), root_path %>
+  </div>
   <h1><%= link_to "Adventures of Ace the Yellow Dog", root_path %></h1>
 
   <nav class="navbar navbar-default">
