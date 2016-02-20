@@ -7,10 +7,16 @@
       <div>
         <h2><%= comic.title %></h2><br>
         <div><%= image_tag comic.images[0], class: 'comic-horizontal' %></div>
-      <!-- use Angular to show ho image when screen > 800px, vert img for smaller -->
-      <!-- <div><%#= image_tag comic.images[1], class: 'comic-vertical'%></div> -->
+        <!-- use Angular to show ho image when screen > 800px, vert img for smaller -->
+        <!-- <div><%#= image_tag comic.images[1], class: 'comic-vertical'%></div> -->
         <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
-      
+        
+        <br>
+
+        <div><%= render comic.comments %></div>
+
+        <div><%= render partial: 'comments/form', locals: {comic: comic} %></div>
+
         <br>
 
         <%= link_to icon('fa fa-eye fa-3x'), comic %>

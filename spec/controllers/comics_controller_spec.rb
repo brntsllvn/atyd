@@ -153,17 +153,15 @@ RSpec.describe ComicsController, type: :controller do
     end
 
     def destroy_comic(comic)
-      delete :destroy, { id: @comic }
+      delete :destroy, { id: comic.id }
     end
 
-    it "destroys the requested comic" do
+    it "destroys" do
       expect { destroy_comic(@comic) }.to change(Comic, :count).by(-1)
     end
 
-    it "redirects to the comics list" do
-      destroy_comic(@comic)
-      expect(response).to redirect_to(comics_url)
+    it "redirects" do
+      expect(destroy_comic(@comic)).to redirect_to(comics_url)
     end
   end
-
 end

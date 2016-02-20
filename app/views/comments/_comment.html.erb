@@ -1,0 +1,8 @@
+<div>
+  <p>
+    <%= image_tag comment.user.image, class: "img-circle profile-img" %>
+    <strong><%= comment.user.name %>:</strong>
+    <%= comment.body %>
+     <%= link_to icon('fa fa-trash fa-3x'), comment, method: :delete %>
+  </p>
+</div>
