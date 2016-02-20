@@ -5,11 +5,14 @@
     <% @comics.each do |comic| %>
 
       <div>
-        <h2><%= comic.title %></h2>
-        <div><%= image_tag comic.images[0] %></div>
-        <div><%= image_tag comic.images[1] %></div>
+        <h2><%= comic.title %></h2><br>
+        <div><%= image_tag comic.images[0], class: 'comic-horizontal' %></div>
+      <!-- use Angular to show ho image when screen > 800px, vert img for smaller -->
+      <!-- <div><%#= image_tag comic.images[1], class: 'comic-vertical'%></div> -->
         <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
       
+        <br>
+
         <%= link_to icon('fa fa-eye fa-3x'), comic %>
         <%= link_to icon('fa fa-pencil fa-3x'), edit_comic_path(comic) %>
         <%= link_to icon('fa fa-trash fa-3x'), comic, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -17,6 +20,3 @@
       </div>
 
      <% end %>
-
-
-
