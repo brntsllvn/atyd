@@ -3,7 +3,7 @@
 <li><%= link_to icon('fa fa-envelope-o fa-3x'), "/pages/contact" %></li>
 
 <% if current_user %>
-  <li><%= link_to image_tag(current_user.image, class: "img-circle profile-img"), signout_path, id: "sign_out"%></li>
+  <li><%= link_to image_tag(current_user.image, class: "img-circle profile-img"), signout_path, id: "sign_out", data: { confirm: 'Are you sure you want to log out?' }%></li>
 <% else %>
   <li><%= link_to icon('fa fa-sign-in fa-3x'), "/auth/google_oauth2", id: "sign_in" %></li>
 <% end %>
