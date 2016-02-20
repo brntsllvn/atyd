@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "figaro"
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'carrierwave-aws'
 gem "mini_magick"
 
@@ -64,6 +65,8 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'pry-rails'
+  gem "binding_of_caller"
+  gem "better_errors"
 end
 
 group :production do
@@ -74,3 +77,4 @@ gem "rspec-rails", group: [:development, :test]
 gem 'factory_girl_rails', group: [:development, :test]
 
 gem "puma"
+

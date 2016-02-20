@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: aa74e9e4301cb1ec7cd1adbdc294e037f881d4b5
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,6 +53,10 @@ GEM
       jmespath (~> 1.0)
     aws-sdk-resources (2.2.16)
       aws-sdk-core (= 2.2.16)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootswatch-rails (3.3.5)
@@ -50,11 +64,6 @@ GEM
     bower-rails (0.10.0)
     builder (3.2.2)
     byebug (8.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     carrierwave-aws (1.0.0)
       aws-sdk (~> 2.0)
       carrierwave (~> 0.7)
@@ -268,9 +277,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootswatch-rails
   bower-rails
   byebug
+  carrierwave!
   carrierwave-aws
   coffee-rails (~> 4.1.0)
   factory_girl_rails

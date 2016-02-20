@@ -20,8 +20,8 @@
     <%= f.date_select :release_date %>
   </div>
   <div class="field">
-    <%= f.label :pic %>
-    <%= f.file_field :pic %>
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -6,7 +6,8 @@
 
       <div>
         <h2><%= comic.title %></h2>
-        <div><%= image_tag comic.pic %></div>
+        <div><%= image_tag comic.images[0] %></div>
+        <div><%= image_tag comic.images[1] %></div>
         <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
       
         <%= link_to icon('fa fa-eye fa-3x'), comic %>

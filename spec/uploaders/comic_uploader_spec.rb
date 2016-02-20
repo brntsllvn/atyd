@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'carrierwave/test/matchers'
+require 'pry'
 
 describe ComicUploader do
   include CarrierWave::Test::Matchers
@@ -9,7 +10,7 @@ describe ComicUploader do
   before(:each) do
     ComicUploader.enable_processing = true
     @comic = Comic.new
-    @uploader = ComicUploader.new(@comic, :pic)
+    @uploader = ComicUploader.new(@comic, :images)
     @uploader.store!(File.open(Rails.root.join('spec', 'uploaders', 'awesome.png')))
   end
 
