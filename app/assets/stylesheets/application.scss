@@ -11,15 +11,13 @@
  * file per style scope.
  */
 
-@import "bootstrap-sprockets";
+ /*
+  *= require_tree .
+  *= require_self
+  *= require 'bootstrap-sass-official'
+ */
+
 @import "font-awesome-sprockets";
-
-@import "bootswatch/flatly/variables";
-
-@import "bootstrap";
-
-@import "bootswatch/flatly/bootswatch";
-
 @import "font-awesome";
 
 .navbar .navbar-nav {
