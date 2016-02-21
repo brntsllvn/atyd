@@ -1,6 +1,7 @@
 <li><%= link_to icon('fa fa-shopping-cart fa-3x'), "/pages/shop" %></li> 
 <li><%= link_to icon('fa fa-info-circle fa-3x'), "/pages/about" %></li>
-<li><%= link_to icon('fa fa-envelope-o fa-3x'), "/pages/contact" %></li>
+<li><%= mail_to 'acetheyellowdog@gmail.com', icon('fa fa-envelope-o fa-3x'), encode: :javascript, target: '_blank' %></li>
+
 
 <% if current_user %>
   <li><%= link_to image_tag(current_user.image, class: "img-circle profile-img"), signout_path, id: "sign_out", data: { confirm: 'Are you sure you want to log out?' }%></li>
