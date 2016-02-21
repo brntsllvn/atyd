@@ -1,0 +1,5 @@
+
+<% if current_user.try(:is_admin?) %>
+  <%= link_to icon('fa fa-pencil fa-3x'), edit_comic_path(comic) %>
+  <%= link_to icon('fa fa-trash fa-3x'), comic, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

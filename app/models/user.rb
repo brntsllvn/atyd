@@ -14,4 +14,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_admin?
+    if self.email == ENV['ADMIN_EMAIL']
+      return true
+    end
+    false
+  end
+
 end
