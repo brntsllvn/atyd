@@ -9,11 +9,6 @@ class ComicsController < ApplicationController
     @comics = Comic.all
   end
 
-  # GET /comics/1
-  # GET /comics/1.json
-  def show
-  end
-
   # GET /comics/new
   def new
     @comic = Comic.new

@@ -17,21 +17,6 @@ RSpec.describe ComicsController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    before :each do
-      @comic = create(:comic)
-      get :show, id: @comic
-    end
-
-    it "assigns the requested comic as @comic" do
-      expect(assigns(:comic)).to eq(@comic)
-    end
-
-    it "renders the :show template" do
-      expect(response).to render_template :show
-    end
-  end
-
   describe "GET #new" do
     before :each do
       get :new

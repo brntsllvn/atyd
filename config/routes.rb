@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'comics#index'
   
-  resources :comics
-  resources :users
+  resources :comics, except: [:show]
+  # resources :users
 
   get "/pages/:page" => "pages#show"
 
