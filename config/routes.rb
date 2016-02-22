@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy] 
   resources :comments, only: [:create, :destroy]
 
+  get 'angular_test', to: 'angular_test#index'
+
 end
