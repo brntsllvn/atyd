@@ -3,6 +3,7 @@ require 'pry'
 
 RSpec.describe SessionsController, type: :controller do
 
+  # TODO
   before :each do
     # messy mock
     request.env["omniauth.auth"] = 

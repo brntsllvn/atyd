@@ -4,6 +4,6 @@
     <strong><%= comment.user.name %></strong>
     (<%= comment.created_at.strftime('%b %d, %Y' ' at %l:%Mp') %>):
     <%= comment.body %>
-     <%= link_to icon('fa fa-trash fa-2x text-danger'), comment, method: :delete %>
+     <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete) if comment.user == current_user || current_user.try(:is_admin?) %>
   </p>
 </div>
