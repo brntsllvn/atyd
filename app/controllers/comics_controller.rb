@@ -27,7 +27,6 @@ class ComicsController < ApplicationController
       if @comic.save
         format.html { redirect_to @comic, notice: 'Comic was successfully created.' }
         format.json { render :show, status: :created, location: @comic }
-        ComicMailer.new_comic.deliver_now
       else
         format.html { render :new }
         format.json { render json: @comic.errors, status: :unprocessable_entity }

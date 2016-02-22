@@ -4,16 +4,17 @@
 
 <% @comics.each do |comic| %>
 
-  <div>
-    <h2><%= comic.title %></h2>
+  <div class='comic'>
+    <h1><%= comic.title %></h1>
+    <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
     <br>
     <div><%= render partial: 'image', locals: {comic: comic} %></div>
     <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
     <br>
-    <div><%= render comic.comments %></div>
     <div><%= render partial: 'comments/form', locals: {comic: comic} %></div>
     <br>
-    <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
+    <div><%= render comic.comments %></div>
+    <br><br><br><br>
   </div>
 
 <% end %>
