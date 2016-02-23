@@ -1,9 +1,17 @@
 <div class='text-left comment'>
   <p>
+
     <%= image_tag comment.user.image, class: "img-circle profile-img" %>
+    
     <strong><%= comment.user.name %></strong>
+    
     (<%= comment.created_at.strftime('%b %d, %Y' ' at %l:%Mp %Z') %>):
+    
     <%= comment.body %>
-     <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete) if comment.user == current_user || current_user.try(:is_admin?) %>
+
+    <% if comment.user == current_user || current_user.try(:is_admin?) %>
+      <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete) %>
+    <% end %>
+  
   </p>
 </div>
