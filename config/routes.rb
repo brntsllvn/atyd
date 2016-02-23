@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy] 
   resources :comments, only: [:create, :destroy]
 
-  get ':action' => 'pages#:action'
 end
