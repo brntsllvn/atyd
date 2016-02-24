@@ -25,8 +25,8 @@ class ComicsController < ApplicationController
 
     respond_to do |format|
       if @comic.save
-        format.html { redirect_to @comic, notice: 'Comic was successfully created.' }
-        format.json { render :show, status: :created, location: @comic }
+        format.html { redirect_to root_path, notice: 'Comic was successfully created.' }
+        format.json { redirect_to root_path, status: :created }
       else
         format.html { render :new }
         format.json { render json: @comic.errors, status: :unprocessable_entity }
@@ -39,8 +39,8 @@ class ComicsController < ApplicationController
   def update
     respond_to do |format|
       if @comic.update(comic_params)
-        format.html { redirect_to @comic, notice: 'Comic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comic }
+        format.html { redirect_to root_path, notice: 'Comic was successfully updated.' }
+        format.json { redirect_to root_path, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @comic.errors, status: :unprocessable_entity }

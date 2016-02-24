@@ -64,7 +64,7 @@ RSpec.describe ComicsController, type: :controller do
 
       it "redirects to the created comic" do
         post_comic(:comic)
-        expect(response).to redirect_to(Comic.last)
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -103,7 +103,7 @@ RSpec.describe ComicsController, type: :controller do
       end
 
       it "redirects to the comic" do
-        expect(response).to redirect_to @comic
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -118,7 +118,7 @@ RSpec.describe ComicsController, type: :controller do
       end
 
       it "re-renders the :edit template" do
-        expect(response).to redirect_to @comic
+        expect(response).to redirect_to root_path
       end
     end
   end

@@ -1,3 +1,3 @@
-        <div><%= image_tag comic.images[0], class: 'comic-horizontal' %></div>
-        <!-- use Angular to show ho image when screen > 800px, vert img for smaller -->
-        <!-- <div><%#= image_tag comic.images[1], class: 'comic-vertical'%></div> -->
+<div><%= image_tag comic.images[0], class: 'hidden-xs' %></div>
+
+<div><%= image_tag comic.images[1], class: 'visible-xs-block'%></div>
