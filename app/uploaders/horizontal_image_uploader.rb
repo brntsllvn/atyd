@@ -1,4 +1,4 @@
-class ComicUploader < CarrierWave::Uploader::Base
+class HorizontalImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 

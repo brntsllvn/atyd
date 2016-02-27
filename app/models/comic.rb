@@ -6,8 +6,7 @@ class Comic < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
-  mount_uploader :horizontal_image, ComicUploader
-
+  mount_uploader :horizontal_image, HorizontalImageUploader
   mount_uploader :vertical_image, VerticalImageUploader
 
 end
