@@ -22,6 +22,7 @@ RSpec.describe CommentsController, type: :controller do
 
       it 'creates a comment' do
         expect { post_comment(:comment) }.to change(Comment, :count).by 1
+        expect(response).to redirect_to root_path
      end
 
      it 'assigns comment to user' do
@@ -31,20 +32,12 @@ RSpec.describe CommentsController, type: :controller do
      it 'assigns comment to comic' do
        expect { post_comment(:comment) }.to change { @comic.comments.count }.by 1
      end
-
-      it 'redirects to root' do
-        expect(post_comment(:comment)).to redirect_to root_path
-      end
     end
 
     context 'invalid comment' do
-
       it 'does not create a comment' do
         expect { post_comment(:invalid_comment) }.to change(Comment, :count).by 0
       end
-      
-      # todo: use Angular
-      it 'tells the user what went wrong'
     end
 
     context 'not signed in user' do
@@ -54,10 +47,8 @@ RSpec.describe CommentsController, type: :controller do
       end
 
       it 'does not create a comment' do
-        expect { not_signed_in_user_post_comment(:comment) }.to change(Comment, :count).by(0)
-      end
-      it 'prompts to sign on' do
-        expect(not_signed_in_user_post_comment(:comment)).to redirect_to root_path
+        expect { not_signed_in_user_post_comment(:comment) }.to change(Comment, :count).by 0
+        expect(response).to redirect_to root_path
       end
     end
   end
@@ -73,10 +64,7 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'destroys' do
       expect { destroy_comment(@comment) }.to change(Comment, :count).by(-1)
-    end
-
-    it 'redirects' do
-      expect(destroy_comment(@comment)).to redirect_to root_path
+      expect(response).to redirect_to root_path   
     end
   end
 end
