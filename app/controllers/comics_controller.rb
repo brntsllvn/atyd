@@ -1,5 +1,5 @@
 class ComicsController < ApplicationController
-  before_action :set_comic, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic, only: [:edit, :update, :destroy]
 
   # GET /comics
   # GET /comics.json
@@ -40,10 +40,8 @@ class ComicsController < ApplicationController
     respond_to do |format|
       if @comic.update(comic_params)
         format.html { redirect_to root_path, notice: 'Comic was successfully updated.' }
-        format.json { redirect_to root_path, status: :ok }
       else
         format.html { render :edit }
-        format.json { render json: @comic.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,13 +57,12 @@ class ComicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comic
       @comic = Comic.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:title, :release_date, :pic, :horizontal_image, :vertical_image)
+      params.require(:comic).permit(:title, :release_date, :horizontal_image, :vertical_image)
     end
 end

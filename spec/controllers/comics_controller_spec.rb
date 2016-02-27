@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe ComicsController, type: :controller do
 
@@ -10,9 +11,6 @@ RSpec.describe ComicsController, type: :controller do
 
     it "assigns all comics to @comics" do
       expect(assigns(:comics)).to eq [@comic]
-    end
-
-    it "renders the :index template" do
       expect(response).to render_template :index
     end
   end
@@ -24,9 +22,6 @@ RSpec.describe ComicsController, type: :controller do
 
     it "assigns a new comic as @comic" do
       expect(assigns(:comic)).to be_a_new(Comic)
-    end
-
-    it "renders the :new template" do
       expect(response).to render_template :new
     end
   end
@@ -39,10 +34,7 @@ RSpec.describe ComicsController, type: :controller do
 
     it "assigns the requested comic as @comic" do
       expect(assigns(:comic)).to eq(@comic)
-    end
-
-    it "renders the :edit template" do
-      expect(response).to render_template :edit     
+      expect(response).to render_template :edit 
     end
   end
 
@@ -57,12 +49,7 @@ RSpec.describe ComicsController, type: :controller do
         expect { post_comic(:comic) }.to change(Comic, :count).by(1)
       end
 
-      it "assigns a newly created comic as @comic" do
-        post_comic(:comic)
-        expect(assigns(:comic)).to be_a(Comic)
-      end
-
-      it "redirects to the created comic" do
+      it "redirects" do
         post_comic(:comic)
         expect(response).to redirect_to root_path
       end
@@ -76,10 +63,6 @@ RSpec.describe ComicsController, type: :controller do
       it "assigns a newly created but unsaved comic as @comic" do
         post_comic(:invalid_comic)
         expect(assigns(:comic)).to be_a_new(Comic)
-      end
-
-      it "re-renders the :new template" do
-        post_comic(:invalid_comic)
         expect(response).to render_template :new
       end
     end
@@ -96,13 +79,7 @@ RSpec.describe ComicsController, type: :controller do
         @comic.reload
         expect(@comic.title).to eq 'New Comic Title'
         expect(@comic.release_date).to eq Date.new(1999, 01, 01)
-      end
-
-      it "assigns the requested comic as @comic" do
         expect(assigns(:comic)).to eq @comic
-      end
-
-      it "redirects to the comic" do
         expect(response).to redirect_to root_path
       end
     end
@@ -115,10 +92,15 @@ RSpec.describe ComicsController, type: :controller do
 
       it "assigns the comic as @comic" do
         expect(assigns(:comic)).to eq @comic
-      end
-
-      it "re-renders the :edit template" do
         expect(response).to render_template :edit
+      end
+    end
+
+    context 'record not found' do
+      it 'raises' do      
+        expect { put :update, { id: 42, comic: 'nada' } 
+               }.to raise_error(ActiveRecord::RecordNotFound)
+        #TODO: redirect somewhere...
       end
     end
   end
