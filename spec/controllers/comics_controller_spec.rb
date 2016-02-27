@@ -17,12 +17,20 @@ RSpec.describe ComicsController, type: :controller do
 
   describe "GET #new" do
     before :each do
+       @user = create(:user)
       get :new
     end
 
     it "assigns a new comic as @comic" do
+      allow(@user).to receive(is_admin?).and_return(true)
       expect(assigns(:comic)).to be_a_new(Comic)
       expect(response).to render_template :new
+    end
+
+    context 'unauthorized user' do
+      it 'redirects' do
+
+      end
     end
   end
 
