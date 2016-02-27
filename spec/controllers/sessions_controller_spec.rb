@@ -3,9 +3,7 @@ require 'pry'
 
 RSpec.describe SessionsController, type: :controller do
 
-  # TODO
   before :each do
-    # messy mock
     request.env["omniauth.auth"] = 
       OmniAuth::AuthHash.new(
       { 'provider' => 'google',
@@ -34,13 +32,8 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).to be_nil
       post :create, provider: :google
       expect(session[:user_id]).to be_truthy
-    end
- 
-    it "redirects to the root" do
-      post :create, provider: :google
       expect(response).to redirect_to root_url
-    end
- 
+    end 
   end
 
   describe "GET #destroy" do
