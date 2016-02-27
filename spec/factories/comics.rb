@@ -1,18 +1,18 @@
 FactoryGirl.define do
   factory :comic do
-    sequence(:title) { |n| 'Awesome Comic #{n}' }
+    title 'Original Comic Title'
     release_date Date.new(1999, 12, 31)
     # carrierwave requires actual file (not just a string)
     # Detail: http://stackoverflow.com/questions/14227086/what-parameters-do-i-need-to-pass-in-the-controller-to-a-carrierwave-mounted-mod
-    images [ Rack::Test::UploadedFile.new(Rails.root.join('spec', 'uploaders', 'awesome.png')),
-             Rack::Test::UploadedFile.new(Rails.root.join('spec', 'uploaders', 'hotdog.jpg'))]
+    horizontal_image Rack::Test::UploadedFile.new(Rails.root.join('spec', 'uploaders', 'horo_img.jpg'))
+    vertical_image   Rack::Test::UploadedFile.new(Rails.root.join('spec', 'uploaders', 'vert_img.jpg'))
 
     factory :invalid_comic do
-      images nil
+      horizontal_image nil
     end
 
     factory :edited_comic do
-      title 'Amazing Comic'
+      title 'New Comic Title'
       release_date Date.new(1999, 01, 01)
     end
   end

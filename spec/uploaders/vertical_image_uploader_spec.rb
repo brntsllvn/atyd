@@ -10,16 +10,16 @@ describe ComicUploader do
   before(:each) do
     ComicUploader.enable_processing = true
     @comic = Comic.new
-    @uploader = ComicUploader.new(@comic, :images)
-    @uploader.store!(File.open(Rails.root.join('spec', 'uploaders', 'horo_img.jpg')))
+    @uploader = VerticalImageUploader.new(@comic, :vertical_image)
+    @uploader.store!(File.open(Rails.root.join('spec', 'uploaders', 'vert_img.jpg')))
   end
 
   # Disable images processing after executing the examples
   after(:each) do
-    ComicUploader.enable_processing = false
+    VerticalImageUploader.enable_processing = false
   end
 
   it "resizes the image" do
-    expect(@uploader).to have_dimensions(1000, 1496)
+    expect(@uploader).to have_dimensions(284, 425)
   end
 end   

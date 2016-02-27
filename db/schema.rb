@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220184501) do
+ActiveRecord::Schema.define(version: 20160227005636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20160220184501) do
   create_table "comics", force: :cascade do |t|
     t.string   "title"
     t.date     "release_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.json     "images"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "vertical_image"
+    t.string   "horizontal_image"
   end
 
   create_table "comments", force: :cascade do |t|

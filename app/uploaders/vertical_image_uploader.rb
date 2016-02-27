@@ -1,8 +1,8 @@
-class ComicUploader < CarrierWave::Uploader::Base
+class VerticalImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [1000, nil]
+  process resize_to_fit: [100, nil]
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -19,7 +19,7 @@ class ComicUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -27,12 +27,12 @@ class ComicUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process :resize_to_fit => [50, 50]
+  #   process resize_to_fit: [50, 50]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
+  # def extension_whitelist
   #   %w(jpg jpeg gif png)
   # end
 

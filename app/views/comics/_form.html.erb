@@ -20,8 +20,12 @@
     <%= f.date_select :release_date %>
   </div>
   <div class="field">
-    <%= f.label :images %>
-    <%= f.file_field :images, multiple: true %>
+    <%= f.label :horizontal_image %>
+    <%= f.file_field :horizontal_image %>
+  </div>
+  <div class="field">
+    <%= f.label :vertical_image %>
+    <%= f.file_field :vertical_image %>
   </div>
   <div class="actions">
     <%= f.submit %>

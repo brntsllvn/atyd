@@ -94,7 +94,7 @@ RSpec.describe ComicsController, type: :controller do
 
       it "updates the requested comic" do
         @comic.reload
-        expect(@comic.title).to eq 'Amazing Comic'
+        expect(@comic.title).to eq 'New Comic Title'
         expect(@comic.release_date).to eq Date.new(1999, 01, 01)
       end
 
@@ -118,7 +118,7 @@ RSpec.describe ComicsController, type: :controller do
       end
 
       it "re-renders the :edit template" do
-        expect(response).to redirect_to root_path
+        expect(response).to render_template :edit
       end
     end
   end
