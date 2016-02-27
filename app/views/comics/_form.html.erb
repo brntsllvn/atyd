@@ -21,13 +21,18 @@
   </div>
   <div class="field">
     <%= f.label :horizontal_image %>
-    <%= f.file_field :horizontal_image %>
+    <%= image_tag(@comic.horizontal_image_url) if @comic.horizontal_image? %>
+    <%= f.file_field :horizontal_image, class: 'center-block btn btn-success'%>
   </div>
   <div class="field">
     <%= f.label :vertical_image %>
-    <%= f.file_field :vertical_image %>
+    <%= image_tag(@comic.vertical_image_url) if @comic.vertical_image? %>
+    <%= f.file_field :vertical_image, class: 'center-block btn btn-success' %>
   </div>
+
+  <br>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:'btn btn-success'%>
   </div>
 <% end %>
