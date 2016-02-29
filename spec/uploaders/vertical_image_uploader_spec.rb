@@ -20,6 +20,6 @@ describe VerticalImageUploader do
   end
 
   it "resizes the image" do
-    expect(@uploader).to have_dimensions(100, 150)
+    expect(@uploader).to have_dimensions(400, 599)
   end
 end   
