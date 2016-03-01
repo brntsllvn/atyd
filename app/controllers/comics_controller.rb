@@ -11,7 +11,11 @@ class ComicsController < ApplicationController
 
   # GET /comics/new
   def new
-    @comic = Comic.new
+    if current_user.try(:is_admin?)
+      @comic = Comic.new
+    else
+      redirect_to root_path, notice: 'Unauthorized'
+    end
   end
 
   # GET /comics/1/edit
@@ -60,6 +64,8 @@ class ComicsController < ApplicationController
     def set_comic
       @comic = Comic.find(params[:id])
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
