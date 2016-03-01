@@ -1,24 +1,17 @@
 class ComicsController < ApplicationController
   before_action :set_comic, only: [:edit, :update, :destroy]
+  before_action :authorized_user?, except: :index
 
-  # GET /comics
-  # GET /comics.json
   def index
     # gibbon = Gibbon::Request.new
     # @lists = gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members.retrieve(params: {"fields": "members.email_address"})
     @comics = Comic.all
   end
 
-  # GET /comics/new
   def new
-    if current_user.try(:is_admin?)
-      @comic = Comic.new
-    else
-      redirect_to root_path, notice: 'Unauthorized'
-    end
+    @comic = Comic.new
   end
 
-  # GET /comics/1/edit
   def edit
   end
 
@@ -65,7 +58,11 @@ class ComicsController < ApplicationController
       @comic = Comic.find(params[:id])
     end
 
-
+    def authorized_user?
+      if !current_user.try(:is_admin?)
+        redirect_to root_path, notice: 'Unauthorized'
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
