@@ -17,18 +17,28 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    redirect_to root_path, notice: 'Comic was successfully destroyed.'
+    if current_user_is_owner_or_admin?
+      @comment.destroy
+      redirect_to root_path, notice: 'Comic was successfully destroyed.'
+    else
+      redirect_to root_path, notice: 'Unauthorized.' 
+    end
   end
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def current_user_is_owner_or_admin?
+      if current_user
+        @comment.user == current_user || current_user.try(:is_admin?)
+      else
+        false
+      end
+    end
+
     def comment_params
       params.require(:comment).permit(:body, :comic_id)
     end

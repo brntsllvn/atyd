@@ -13,9 +13,8 @@ RSpec.describe CommentsController, type: :controller do
                     comment: attributes_for(:comment, comic_id: @comic) 
     end
 
-    context 'signed in user' do
+    context 'authorized user' do
       before :each do
-        # stub the signed in user
         @user = create(:user)
         session[:user_id] = @user.id
       end
@@ -40,7 +39,7 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
 
-    context 'not signed in user' do
+    context 'unauthorized user' do
 
       def not_signed_in_user_post_comment(comment) 
         post :create, comment: attributes_for(:comment)
@@ -54,17 +53,33 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe '#destroy' do
-    before :each do
-      @comment = create(:comment)
-    end
-
     def destroy_comment(comment)
       delete :destroy, { id: comment.id }
     end
 
-    it 'destroys' do
-      expect { destroy_comment(@comment) }.to change(Comment, :count).by(-1)
-      expect(response).to redirect_to root_path   
+    context 'authorized user: owner or admin' do
+      it 'destroys' do
+        @user = create(:user)
+        session[:user_id] = @user.id
+        @comment = @user.comments.create(attributes_for(:comment))
+        expect { destroy_comment(@comment) }.to change(Comment, :count).by -1
+        expect(response).to redirect_to root_path          
+      end
+    end
+
+    context 'unauthorized user' do 
+      it 'does not destroy - user not signed in' do
+        @comment = create(:comment)
+        expect { destroy_comment(@comment) }.to change(Comment, :count).by 0
+        expect(response).to redirect_to root_path 
+      end
+      it 'does not destroy - user not owner' do
+        @user = create(:user)
+        session[:user_id] = @user.id 
+        @comment = create(:comment)
+        expect { destroy_comment(@comment) }.to change(Comment, :count).by 0
+        expect(response).to redirect_to root_path      
+      end
     end
   end
 end
