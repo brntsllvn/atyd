@@ -5,12 +5,14 @@ class CommentsController < ApplicationController
     if current_user
       @comment = current_user.comments.new(comment_params)
 
+      respond_to do |format|
         if @comment.save
-          redirect_to root_path, notice: 'Comment was successfully created.'
+          format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
+          format.js
         else
           redirect_to root_path, alert: 'Invalid comment.'
         end
-
+      end
     else
       redirect_to root_path, notice: 'Log in to comment.'
     end
