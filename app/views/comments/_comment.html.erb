@@ -1,4 +1,4 @@
-<div class='text-left comment'>
+<div class='<%="comment#{comment.id}"%> text-left comment'>
   <p>
 
     <%= image_tag comment.user.image, class: "img-circle profile-img" %>
@@ -10,7 +10,7 @@
     <%= comment.body %>
 
     <% if comment.user == current_user || current_user.try(:is_admin?) %>
-      <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete) %>
+      <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete, remote: true) %>
     <% end %>
   
   </p>

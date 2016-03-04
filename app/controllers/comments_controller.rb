@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
+          format.html { redirect_to root_path }
           format.js
         else
           redirect_to root_path, alert: 'Invalid comment.'
@@ -21,7 +21,12 @@ class CommentsController < ApplicationController
   def destroy
     if current_user_is_owner_or_admin?
       @comment.destroy
-      redirect_to root_path, notice: 'Comic was successfully destroyed.'
+
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+
     else
       redirect_to root_path, notice: 'Unauthorized.' 
     end

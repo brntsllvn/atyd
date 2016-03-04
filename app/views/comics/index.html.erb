@@ -24,7 +24,7 @@
     </div>
     <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse in" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
       <div class="panel-body comments">
-        <div><%= render comic.comments %></div>
+        <div><%= render comic.comments.order(created_at: :desc) %></div>
       </div>
     </div>
   </div>
