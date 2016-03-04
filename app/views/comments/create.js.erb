@@ -1,2 +1,2 @@
-$('#comment_body').val("");
-$('.comments').prepend('<%= j render(@comment) %>');
+$('#comic-<%= @comment.comic.id %>').prepend('<%= j render(@comment) %>');
+$('.form-control').val("");
