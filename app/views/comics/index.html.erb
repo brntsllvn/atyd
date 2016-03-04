@@ -9,7 +9,7 @@
   <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
   <br>
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
-  <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
+  <h4 id='moo'><%= comic.release_date.strftime('%b %d, %Y') %></h4>
   <br>
   <div><%= render partial: 'comments/form', locals: {comic: comic} %></div>
   <br>
@@ -17,8 +17,8 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id='<%="heading-#{comic.id}"%>'>
       <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href='<%="#collapse-#{comic.id}"%>' aria-expanded="true" aria-controls='<%="collapse-#{comic.id}"%>'>
-          Comments
+        <a id='<%="comment-counter-for-comic-#{comic.id}"%>' role="button" data-toggle="collapse" data-parent="#accordion" href='<%="#collapse-#{comic.id}"%>' aria-expanded="true" aria-controls='<%="collapse-#{comic.id}"%>'>
+          <%= "#{comic.comments.count} Comments" %>
         </a>
       </h4>
     </div>

@@ -21,11 +21,8 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "#create" do
- 
-    it "creates a user" do
-      expect {
-        post :create, provider: :google
-      }.to change{ User.count }.by(1)
+    it "creates a user", :vcr do
+      expect { post :create, provider: :google }.to change{ User.count }.by(1)
     end
  
     it "creates a session" do

@@ -8,6 +8,18 @@ RSpec.describe CommentsController, type: :controller do
       @comic = create(:comic)
     end
 
+    def create_mock_user
+      user = double(:user)
+      allow(controller).to(receive(:current_user).and_return(user))
+      allow(controller.current_user).to receive(:is_admin?).and_return(false)
+    end
+
+    def create_mock_admin
+      user = double(:user)
+      allow(controller).to(receive(:current_user).and_return(user))
+      allow(controller.current_user).to receive(:is_admin?).and_return(true)
+    end
+
     def post_comment(comment)
       post :create, user_id: @user, 
                     comment: attributes_for(:comment, comic_id: @comic) 

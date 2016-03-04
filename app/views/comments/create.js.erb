@@ -1,2 +1,3 @@
 $('#comic-<%= @comment.comic.id %>').prepend('<%= j render(@comment) %>');
 $('.form-control').val("");
+$('#comment-counter-for-comic-<%= @comment.comic.id %>').html('<%= "#{@comment.comic.comments.count} Comments" %>');

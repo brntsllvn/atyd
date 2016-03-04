@@ -1,1 +1,2 @@
 $('.comment<%= @comment.id %>').remove();
+$('#comment-counter-for-comic-<%= @comment.comic.id %>').html('<%= "#{@comment.comic.comments.count} Comments" %>');

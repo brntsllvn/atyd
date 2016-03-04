@@ -54,9 +54,13 @@ gem 'omniauth-google-oauth2'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "rspec-rails"
+  gem 'factory_girl_rails'
   gem 'byebug'
 end
+
+  gem 'vcr', group: :test
+  gem 'webmock', group: :test
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -72,9 +76,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
-gem "rspec-rails", group: [:development, :test]
-gem 'factory_girl_rails', group: [:development, :test]
 
 gem "puma"
 
