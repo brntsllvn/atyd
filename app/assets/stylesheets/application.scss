@@ -64,7 +64,7 @@ html {
 }
 
 .comment {
-  margin: 0 40px;
+  margin: 0 10px;
 }
 
 .btn-file {
@@ -90,3 +90,6 @@ input[readonly] {
   cursor: text !important;
 }
 
+.btn-tiny {
+  width: 20em;  height: 1em;  
+}

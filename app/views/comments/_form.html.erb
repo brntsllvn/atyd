@@ -1,13 +1,9 @@
-<%= form_for(Comment.new, remote: true, html: { class: "comment form-inline text-left" }) do |f| %>
-  <%= f.hidden_field :comic_id, value: comic.id %>
-  <div class='form-group'>
-    <div class="field">
-      <%= f.text_field :body, placeholder: "Something friendly...", class: 'form-control' %>
-    </div>
-  </div>
-    <div class='form-group'>
-    <div class="actions">
-      <%= f.submit "comment", class: 'btn btn-primary' %>
-    </div>
-  </div>
+<% if current_user %>
+  <%= form_for(Comment.new, remote: true, html: { class: '' }) do |f| %>
+    <%= f.hidden_field :comic_id, value: comic.id %>
+    <%= f.text_field :body, placeholder: "Say something friendly...then press 'enter'", class: 'form-control' %>
+    <%= f.submit "comment", class: 'hidden' %>
+  <% end %>
+<% else %>
+  <%= link_to 'Sign In', "/auth/google_oauth2"%> to Comment  
 <% end %>

@@ -8,13 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class='text-center'>
-
+<body class='container-fluid text-center'>
   <div>
-    <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/acetheyellowdog/uploads/comic/pic/head.jpeg', 
-        class: 'banner-image'), root_path %>
+    <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/acetheyellowdog/uploads/comic/pic/head.jpeg', class: 'banner-image'), root_path %>
   </div>
-  <h1><%= link_to "Adventures of Ace the Yellow Dog", root_path %></h1>
+  <h1>The Adventures of Ace the Yellow Dog</h1>
 
   <nav>
     <div class="container-fluid">  
@@ -30,7 +28,6 @@
     <hr>
     <%= render "shared/navlinks" %>
   </div>
-
 </body>
 
 </html>

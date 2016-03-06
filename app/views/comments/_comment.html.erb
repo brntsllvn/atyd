@@ -1,17 +1,15 @@
 <div class='<%="comment#{comment.id}"%> text-left comment'>
   <p>
-
     <%= image_tag comment.user.image, class: "img-circle profile-img" %>
     
     <strong><%= comment.user.name %></strong>
     
-    (<%= comment.created_at.strftime('%b %d, %Y' ' at %l:%Mp %Z') %>):
+    (<%= time_ago_in_words comment.created_at %> ago): 
     
     <%= comment.body %>
 
     <% if comment.user == current_user || current_user.try(:is_admin?) %>
-      <%= link_to(icon('fa fa-trash fa-2x text-danger'), comment, method: :delete, remote: true) %>
+      <%= link_to 'DELETE', comment, method: :delete, remote: true %>
     <% end %>
-  
   </p>
 </div>

@@ -5,30 +5,34 @@
 <% @comics.each do |comic| %>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
   <h1><%= comic.title %></h1>
+  <br>
+  <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
   <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
   <br>
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
-  <h4 id='moo'><%= comic.release_date.strftime('%b %d, %Y') %></h4>
-  <br>
-  <div><%= render partial: 'comments/form', locals: {comic: comic} %></div>
-  <br>
+  <br><br>
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id='<%="heading-#{comic.id}"%>'>
-      <h4 class="panel-title">
-        <a id='<%="comment-counter-for-comic-#{comic.id}"%>' role="button" data-toggle="collapse" data-parent="#accordion" href='<%="#collapse-#{comic.id}"%>' aria-expanded="true" aria-controls='<%="collapse-#{comic.id}"%>'>
-          <%= "#{comic.comments.count} Comments" %>
-        </a>
-      </h4>
-    </div>
-    <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse in" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
-      <div id='<%="comic-#{comic.id}"%>' class="panel-body comments">
-        <div><%= render comic.comments.order(created_at: :desc) %></div>
+  <div class='col-md-10 col-md-offset-1'>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id='<%="heading-#{comic.id}"%>'>
+        <h4 class="panel-title">
+          <a id='<%="comment-counter-for-comic-#{comic.id}"%>' role="button" data-toggle="collapse" data-parent="#accordion" href='<%="#collapse-#{comic.id}"%>' aria-expanded="true" aria-controls='<%="collapse-#{comic.id}"%>'>
+            <%= "#{comic.comments.count} Comments" %>
+          </a>
+        </h4>
+      </div>   
+      <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
+        <div><%= render partial: 'comments/form', locals: {comic: comic} %></div> 
+        <div id='<%="comic-#{comic.id}"%>' class="panel-body comments">
+          <div><%= render comic.comments.order(created_at: :desc) %></div>
+        </div>        
       </div>
     </div>
   </div>
 
 </div>
 
+  <br><br>  <br><br>  <br><br>
 <% end %>

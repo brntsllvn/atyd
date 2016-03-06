@@ -10,11 +10,12 @@ class CommentsController < ApplicationController
           format.html { redirect_to root_path }
           format.js
         else
-          redirect_to root_path, alert: 'Invalid comment.'
+          flash[:notice] = 'Invalid comment.'
+          redirect_to root_path
         end
       end
     else
-      redirect_to root_path, notice: 'Log in to comment.'
+      redirect_to root_path
     end
   end
 
