@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
               :email_address=>current_user.email.downcase, 
               :merge_fields=>{:FNAME=>current_user.name, :LNAME=>"VIA-ATYD"}}
     @gibbon = Gibbon::Request.new
-    @gibbon.lists(ENV["MAILCHIMP_LIST_ID_TEST"]).members(subscriber_hash).upsert(body: params)
+    @gibbon.lists(ENV["MAILCHIMP_LIST_ID_REAL"]).members(subscriber_hash).upsert(body: params)
     redirect_to root_path
   end
 
