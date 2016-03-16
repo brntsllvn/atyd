@@ -1,3 +1,6 @@
+
+<%= link_to('Sign up for weekly comic notifications', subscribe_path, class: 'btn btn-success') if current_user %>
+
 <%= link_to('New Comic', new_comic_path, class: "btn btn-success") if current_user.try(:is_admin?) %>
 
 <p id="notice"><%= notice %></p>

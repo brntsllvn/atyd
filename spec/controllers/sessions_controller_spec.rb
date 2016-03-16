@@ -21,7 +21,7 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "#create" do
-    it "creates a user", :vcr do
+    it "creates a user" do
       expect { post :create, provider: :google }.to change{ User.count }.by(1)
     end
  
@@ -33,7 +33,7 @@ RSpec.describe SessionsController, type: :controller do
     end 
   end
 
-  describe "GET #destroy" do
+  describe "#destroy" do
     it "destroys a session" do
       post :create, provider: :google
       expect(session[:user_id]).to be_truthy
