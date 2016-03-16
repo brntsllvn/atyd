@@ -1,8 +1,8 @@
-<% flash.each do |key, value| %>
+<% flash.each do |_, value| %>
   <%= content_tag :div, value, class: 'alert alert-success' %>
 <% end %>
 
-<%= link_to('Sign up for weekly comic notifications', subscribe_path, class: 'btn btn-success') if current_user && !current_user.try(:subscribed) %>
+<%= link_to('Sign up for weekly comic notifications', subscribe_path, class: 'btn btn-success') %>
 
 <%= link_to('New Comic', new_comic_path, class: "btn btn-success") if current_user.try(:is_admin?) %>
 
