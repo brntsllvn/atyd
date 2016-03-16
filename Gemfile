@@ -38,9 +38,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'byebug'
 end
-
-  gem 'vcr', group: :test
-  gem 'webmock', group: :test
   
 gem 'capybara'
 
