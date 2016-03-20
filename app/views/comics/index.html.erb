@@ -32,7 +32,7 @@
           <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
             <div><%= render partial: 'comments/form', locals: {comic: comic} %></div> 
             <div id='<%="comic-#{comic.id}"%>' class="panel-body comments">
-              <div><%= render comic.comments.order(created_at: :desc) %></div>
+              <div><%= render comic.comments.order(:created_at) %></div>
             </div>        
           </div>
         </div>
