@@ -8,7 +8,7 @@
 
 <%= link_to('New Comic', new_comic_path, class: "btn btn-success") if current_user.try(:is_admin?) %>
 
-<% @comics.each do |comic| %>
+<% @comics.order(created_at: :desc).each do |comic| %>
   
   <h1><%= comic.title %></h1>
   <br>
@@ -32,7 +32,7 @@
           <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
             <div><%= render partial: 'comments/form', locals: {comic: comic} %></div> 
             <div id='<%="comic-#{comic.id}"%>' class="panel-body comments">
-              <div><%= render comic.comments.order(:created_at) %></div>
+              <div><%= render comic.comments.order(created_at: :desc) %></div>
             </div>        
           </div>
         </div>
