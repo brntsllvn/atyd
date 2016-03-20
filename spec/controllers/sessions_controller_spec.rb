@@ -4,20 +4,7 @@ require 'pry'
 RSpec.describe SessionsController, type: :controller do
 
   before :each do
-    request.env["omniauth.auth"] = 
-      OmniAuth::AuthHash.new(
-      { 'provider' => 'google',
-        'uid' => '12345',
-          'info' => {
-            'name' => 'natasha',
-            'email' => 'hi@natashatherobot.com',
-            'image' => '123456789.png'
-          },
-          'credentials' => {
-            'token' => '123USA',
-            'expires_at' => 12345
-          }
-      })
+    request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
   end
 
   describe "#create" do

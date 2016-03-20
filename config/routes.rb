@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  get 'subscribe', to: 'sessions#subscribe', as: 'subscribe'
+  post '/subscriptions/subscribe', to: 'subscriptions#subscribe'
 
   resources :sessions, only: [:create, :destroy] 
   resources :comments, only: [:create, :destroy]

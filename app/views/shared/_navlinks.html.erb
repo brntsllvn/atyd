@@ -4,10 +4,10 @@
   <li><%= mail_to 'acetheyellowdog@gmail.com', "CONTACT", encode: :javascript, target: '_blank' %></li>
 
   <% if current_user %>
-    <li><%= link_to "LOG OUT", signout_path, id: "sign_out" %></li>
+    <li><%= link_to "LOG OUT", signout_path, class: "log_out" %></li>
     <li><%= image_tag(current_user.image, class: "img-circle profile-img") %></li>
   <% else %>
-    <li><%= link_to "LOG IN", "/auth/google_oauth2", id: "sign_in" %></li>
+    <li><%= link_to "LOG IN", "/auth/google_oauth2", class: "log_in" %></li>
   <% end %>
 
 </ul>

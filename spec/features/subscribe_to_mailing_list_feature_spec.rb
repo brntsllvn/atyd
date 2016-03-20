@@ -3,23 +3,40 @@ require 'pry'
 
 feature 'subscribe to email list' do
 
-    # scenario 'success' do
+  before :each do
+    @visitor_first = 'Smokey'
+    @visitor_last = 'T. Bear'
+    @visitor_email = 'SmokeyT@Bear.com'.downcase
 
-    #   user = create(:user)
-    #   sign_in_with_google user
+    gibbon = Gibbon::Request.new
+    members = gibbon.lists(ENV['MAILCHIMP_LIST_ID_REAL']).members.retrieve(params: {status: 'subscribed', count: '5000'}).to_s
 
-    #   gibbon = Gibbon::Request.new
-    #   members = gibbon.lists(ENV['MAILCHIMP_LIST_ID_TEST']).members.retrieve
-    #   expect(members).not_to include user.email
+    if members.include? @visitor_email
+      gibbon.lists(ENV['MAILCHIMP_LIST_ID_REAL']).members(Digest::MD5.hexdigest(@visitor_email)).update(body: { status: "unsubscribed" })
+    end
+  end
 
-    #   visit '/'
+  scenario 'success' do
+    gibbon = Gibbon::Request.new
+    members = gibbon.lists(ENV['MAILCHIMP_LIST_ID_REAL']).members.retrieve(params: {status: 'subscribed', count: '5000'}).to_s
+    expect(members).not_to include @visitor_first
+    expect(members).not_to include @visitor_last
+    expect(members).not_to include @visitor_email
 
-    #   click_link 'Sign up for weekly comic notifications'
-    #   expect(page).to have_context 'Successfully sucscribed!'
-    #   expect(members).to include user.email
-    #   # garbarge-collect
+    visit '/'
 
-    # end
+    fill_in :first_name, with: @visitor_first
+    fill_in :last_name, with: @visitor_last
+    fill_in :email, with: @visitor_email
+    click_on 'Submit'
+
+    expect(page).to have_content 'Subscribed. Thanks!'
+
+    members = gibbon.lists(ENV['MAILCHIMP_LIST_ID_REAL']).members.retrieve(params: {status: 'subscribed', count: '5000'}).to_s
+    expect(members).to include @visitor_first
+    expect(members).to include @visitor_last
+    expect(members).to include @visitor_email
+  end
 
     # scenario 'fail' do
     #   visit '/'
