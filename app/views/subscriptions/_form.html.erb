@@ -1,25 +1,21 @@
-<div class='container well'>
-  <h4>Sign up for weekly comic notifications!</h4>
-  <hr>
-  <%= form_tag subscriptions_subscribe_path, html: { class: 'form-horizontal' } do %>
-    <div class='container form-group'>
-      <%= label_tag :first_name, nil, class: 'col-sm-2 col-sm-offset-2 control-label' %>
-      <div class="col-sm-4">
-        <%= text_field_tag :first_name, params[:first_name], class: 'form-control' %>
-      </div> 
-    </div>
-    <div class='container form-group'>
-      <%= label_tag :last_name, nil, class: 'col-sm-2 col-sm-offset-2 control-label' %>
-      <div class="col-sm-4">
-        <%= text_field_tag :last_name, params[:last_name], class: 'form-control' %>
-      </div> 
-    </div>
-    <div class='container form-group'>
-      <%= label_tag :email, nil, class: 'col-sm-2 col-sm-offset-2 control-label' %>
-      <div class="col-sm-4">
-        <%= text_field_tag :email, params[:email], required: true, class: 'form-control' %>
-      </div> 
-    </div>
-    <%= submit_tag 'Submit', class: 'btn btn-success' %>
-  <% end %>
-</div>
+<%= form_tag subscriptions_subscribe_path, html: { class: 'form-horizontal' } do %>
+  <div class='container form-group'>
+    <%= label_tag :first_name, nil, class: 'col-sm-2 col-sm-offset-1 control-label' %>
+    <div class="col-sm-4">
+      <%= text_field_tag :first_name, params[:first_name], class: 'form-control' %>
+    </div> 
+  </div>
+  <div class='container form-group'>
+    <%= label_tag :last_name, nil, class: 'col-sm-2 col-sm-offset-1 control-label' %>
+    <div class="col-sm-4">
+      <%= text_field_tag :last_name, params[:last_name], class: 'form-control' %>
+    </div> 
+  </div>
+  <div class='container form-group'>
+    <%= label_tag :email, nil, class: 'col-sm-2 col-sm-offset-1 control-label' %>
+    <div class="col-sm-4">
+      <%= text_field_tag :email, params[:email], required: true, class: 'form-control' %>
+    </div> 
+  </div>
+  <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+<% end %>

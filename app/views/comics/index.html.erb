@@ -2,17 +2,12 @@
   <%= content_tag :div, value, class: 'alert alert-success' %>
 <% end %>
 
-<%= render partial: 'subscriptions/form' %>
-
-<br><br><br><br><br>
-
 <%= link_to('New Comic', new_comic_path, class: "btn btn-success") if current_user.try(:is_admin?) %>
 
 <% @comics.order(created_at: :desc).each do |comic| %>
   
-  <h1><%= comic.title %></h1>
-  <br>
-  <h4><%= comic.release_date.strftime('%b %d, %Y') %></h4>
+  <h2><%= comic.title %></h2>
+  <h5><%= comic.release_date.strftime('%b %d, %Y') %></h5>
   <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
   <br>
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
@@ -40,6 +35,7 @@
     </div>
   </div>
 
-  <br><br><br><br><br>
+  <hr>
+  <br><br><br>
 
 <% end %>

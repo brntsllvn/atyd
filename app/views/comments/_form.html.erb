@@ -1,7 +1,7 @@
 <% if current_user %>
   <%= form_for(Comment.new, remote: true, html: { class: '' }) do |f| %>
     <%= f.hidden_field :comic_id, value: comic.id %>
-    <%= f.text_field :body, placeholder: "Say something friendly...then press 'enter'", class: 'form-control' %>
+    <%= f.text_field :body, placeholder: "Add a comment...", class: 'form-control' %>
     <%= f.submit "comment", class: 'hidden' %>
   <% end %>
 <% else %>
