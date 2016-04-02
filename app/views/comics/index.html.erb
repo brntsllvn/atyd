@@ -16,10 +16,13 @@
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
   <br><br>
 
-  <%= button_to vote_comic_path(comic), method: :post, class: 'btn btn-warning', remote: true do %>
-  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> 
-  <span id='comic_<%= comic.id %>_votes'><%= "#{@comic.try(:votes) ? @comic.votes.count : 0}" %></span>
+  <%= link_to vote_comic_path(comic), method: :post , remote: true do %>
+    <i class="fa fa-heart fa-2x"></i>
+    <span id='comic_<%= comic.id %>_votes' class="vote-count"><%= "#{comic.try(:votes) ? comic.votes.count : 0}" %></span>
   <% end %> 
+
+  <br>
+  <br>
 
   <div class='container'>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
