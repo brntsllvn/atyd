@@ -1,5 +1,5 @@
 class ComicsController < ApplicationController
-  before_action :set_comic, only: [:edit, :update, :destroy]
+  before_action :set_comic, only: [:edit, :update, :destroy, :vote]
   before_action :authorized_user?, except: :index
 
   def index
@@ -42,6 +42,19 @@ class ComicsController < ApplicationController
       end
     end
   end
+
+  def vote
+    has_not_voted = Vote.where(comic: @comic, user: current_user).blank? ? true : false
+    if has_not_voted
+      @vote = Vote.create(comic: @comic, user: current_user)
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to root_path, alert: 'Only 1 vote.'      
+    end
+  end
+
 
   # DELETE /comics/1
   # DELETE /comics/1.json

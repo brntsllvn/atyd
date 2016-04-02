@@ -6,8 +6,6 @@
 
 <% @comics.order(created_at: :desc).each do |comic| %>
 
-  <%# comic_tagged_url = "#{request.fullpath}##{comic.title.downcase.tr(" ", "_")}" %>
-  
   <h2><%= comic.title %></h2>
 
   <a id='<%= comic.title.downcase.tr(" ", "_") %>'></a>
@@ -18,10 +16,10 @@
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
   <br><br>
 
-<!--   <div><%#= comic_tagged_url %></div>
-  <div class="g-plusone" data-href="<%= "comic_tagged_url" %>"></div>
-  <div class="g-plusone" data-href="http://acetheyellowdog.com/#top-of-page"></div>  
-  <div class="g-plusone" data-href="http://www.acetheyellowdog.com/#top-of-page"></div> -->
+  <%= button_to vote_comic_path(comic), method: :post, class: 'btn btn-warning', remote: true do %>
+  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> 
+  <span id='comic_<%= comic.id %>_votes'><%= "#{@comic.try(:votes) ? @comic.votes.count : 0}" %></span>
+  <% end %> 
 
   <div class='container'>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

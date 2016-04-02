@@ -2,8 +2,12 @@ Rails.application.routes.draw do
 
   root 'comics#index'
   
-  resources :comics, except: [:show]
-
+  resources :comics, except: :show do
+    member do
+      post 'vote'
+    end
+  end
+  
   get "/pages/:page" => "pages#show"
 
   get 'auth/:provider/callback', to: 'sessions#create'

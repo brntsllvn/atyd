@@ -13,15 +13,35 @@ RSpec.describe ComicsController, type: :controller do
   end
 
   def create_mock_user
+
     user = double(:user)
     allow(controller).to(receive(:current_user).and_return(user))
     allow(controller.current_user).to receive(:is_admin?).and_return(false)
   end
 
   def create_mock_admin
-    user = double(:user)
+    user = create(:user)
     allow(controller).to(receive(:current_user).and_return(user))
     allow(controller.current_user).to receive(:is_admin?).and_return(true)
+  end
+
+  describe "POST #vote" do
+    it 'increments vote count' do
+      create_mock_admin
+      comic = create(:comic)
+      params = { id: comic.id, format: 'js' }
+      expect { post :vote, params }.to change(Vote, :count).by(1)
+    end
+    context 'user not logged in'
+    context 'user already voted' do
+      it 'does not increment' do
+        create_mock_admin
+        comic = create(:comic)
+        vote = create(:vote, comic: comic, user: User.last)
+        params = { id: comic.id, format: 'js' }
+        expect { post :vote, params }.to change(Vote, :count).by(0)
+      end
+    end
   end
 
   describe "GET #new" do
