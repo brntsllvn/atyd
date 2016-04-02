@@ -5,13 +5,20 @@
 <%= link_to('New Comic', new_comic_path, class: "btn btn-success") if current_user.try(:is_admin?) %>
 
 <% @comics.order(created_at: :desc).each do |comic| %>
+
+  <% comic_tagged_url = "#{request.original_url}/##{comic.title.downcase.tr(" ", "_")}" %>
   
   <h2><%= comic.title %></h2>
+
+  <a id='<%= comic.title.downcase.tr(" ", "_") %>'></a>
+
   <h5><%= comic.release_date.strftime('%b %d, %Y') %></h5>
   <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
   <br>
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
   <br><br>
+
+  <div class="g-plusone" data-href='http://localhost:3000/#top-of-page'></div>
 
   <div class='container'>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
