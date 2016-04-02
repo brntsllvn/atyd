@@ -11,44 +11,26 @@
   <a id='<%= comic.title.downcase.tr(" ", "_") %>'></a>
 
   <h5><%= comic.release_date.strftime('%b %d, %Y') %></h5>
+  
   <div><%= render partial: 'admin_links', locals: {comic: comic} %></div>
+  
   <br>
+  
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
+  
   <br><br>
 
-  <%= link_to vote_comic_path(comic), method: :post , remote: true do %>
-    <i class="fa fa-heart fa-2x"></i>
-    <span id='comic_<%= comic.id %>_votes' class="vote-count"><%= "#{comic.try(:votes) ? comic.votes.count : 0}" %></span>
-  <% end %> 
+  <div><%= render partial: 'votes', locals: {comic: comic} %></div>
 
   <br>
-  <br>
 
-  <div class='container'>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class='col-md-10 col-md-offset-1'>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id='<%="heading-#{comic.id}"%>'>
-            <h4 class="panel-title">
-              <a id='<%="comment-counter-for-comic-#{comic.id}"%>' role="button" data-toggle="collapse" data-parent="#accordion" href='<%="#collapse-#{comic.id}"%>' aria-expanded="true" aria-controls='<%="collapse-#{comic.id}"%>'>
-                <%= "#{comic.comments.count} Comments" %>
-              </a>
-            </h4>
-          </div>   
-          <div id='<%="collapse-#{comic.id}"%>' class="panel-collapse collapse" role="tabpanel" aria-labelledby='<%="heading-#{comic.id}"%>'>
-            <div><%= render partial: 'comments/form', locals: {comic: comic} %></div> 
-            <div id='<%="comic-#{comic.id}"%>' class="panel-body comments">
-              <div><%= render comic.comments.order(created_at: :desc) %></div>
-            </div>        
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'comments', locals: {comic: comic} %></div>
 
   <br>
+
   <%= link_to('Back to Top', root_path(anchor: 'top-of-page')) %>
   <hr>
+  
   <br><br><br>
 
 <% end %>

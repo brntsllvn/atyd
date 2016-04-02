@@ -1,0 +1,4 @@
+  <%= link_to vote_comic_path(comic), method: :post , remote: true do %>
+    <i class="fa fa-heart fa-2x"></i>
+    <span id='comic_<%= comic.id %>_votes' class="vote-count"><%= "#{comic.try(:votes) ? comic.votes.count : 0}" %></span>
+  <% end %> 
