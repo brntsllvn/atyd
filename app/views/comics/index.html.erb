@@ -6,7 +6,7 @@
 
 <% @comics.order(created_at: :desc).each do |comic| %>
 
-  <% comic_tagged_url = "#{request.original_url}##{comic.title.downcase.tr(" ", "_")}" %>
+  <%# comic_tagged_url = "#{request.fullpath}##{comic.title.downcase.tr(" ", "_")}" %>
   
   <h2><%= comic.title %></h2>
 
@@ -18,8 +18,10 @@
   <div><%= render partial: 'image', locals: {comic: comic} %></div>
   <br><br>
 
-  <!-- <div><%#= comic_tagged_url %></div> -->
+<!--   <div><%#= comic_tagged_url %></div>
   <div class="g-plusone" data-href="<%= "comic_tagged_url" %>"></div>
+  <div class="g-plusone" data-href="http://acetheyellowdog.com/#top-of-page"></div>  
+  <div class="g-plusone" data-href="http://www.acetheyellowdog.com/#top-of-page"></div> -->
 
   <div class='container'>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
