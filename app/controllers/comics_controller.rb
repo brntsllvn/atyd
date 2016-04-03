@@ -1,6 +1,6 @@
 class ComicsController < ApplicationController
   before_action :set_comic, only: [:edit, :update, :destroy, :vote]
-  before_action :authorized_user?, except: :index
+  before_action :authorized_user?, except: [:index, :vote]
 
   def index
     # gibbon = Gibbon::Request.new
@@ -44,14 +44,22 @@ class ComicsController < ApplicationController
   end
 
   def vote
-    has_not_voted = Vote.where(comic: @comic, user: current_user).blank? ? true : false
-    if has_not_voted
-      @vote = Vote.create(comic: @comic, user: current_user)
+    if current_user
+      
+      has_not_voted = Vote.where(comic: @comic, user: current_user).blank? ? true : false
+      
+      if has_not_voted 
+        @vote = Vote.create(comic: @comic, user: current_user)
+      else
+        Vote.where(comic: @comic, user: current_user).first.destroy
+      end
+
       respond_to do |format|
         format.js
       end
+
     else
-      redirect_to root_path, alert: 'Only 1 vote.'      
+      redirect_to root_path 
     end
   end
 

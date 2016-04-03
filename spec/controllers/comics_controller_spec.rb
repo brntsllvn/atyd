@@ -13,7 +13,6 @@ RSpec.describe ComicsController, type: :controller do
   end
 
   def create_mock_user
-
     user = double(:user)
     allow(controller).to(receive(:current_user).and_return(user))
     allow(controller.current_user).to receive(:is_admin?).and_return(false)
@@ -32,14 +31,20 @@ RSpec.describe ComicsController, type: :controller do
       params = { id: comic.id, format: 'js' }
       expect { post :vote, params }.to change(Vote, :count).by(1)
     end
-    context 'user not logged in'
-    context 'user already voted' do
+    context 'user not logged in' do
       it 'does not increment' do
+        comic = create(:comic)
+        params = { id: comic.id, format: 'js' }
+        expect { post :vote, params }.to change(Vote, :count).by(0)
+      end
+    end
+    context 'user already voted' do
+      it 'decrements' do
         create_mock_admin
         comic = create(:comic)
         vote = create(:vote, comic: comic, user: User.last)
         params = { id: comic.id, format: 'js' }
-        expect { post :vote, params }.to change(Vote, :count).by(0)
+        expect { post :vote, params }.to change(Vote, :count).by(-1)
       end
     end
   end
