@@ -5,5 +5,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   !Rails.env.production? ? ENV["GOOGLE_CLIENT_ID_DEV"] : ENV["GOOGLE_CLIENT_ID_PROD"],
   !Rails.env.production? ? ENV["GOOGLE_CLIENT_SECRET_DEV"] : ENV["GOOGLE_CLIENT_SECRET_PROD"]
 
-  OmniAuth.config.full_host = Rails.env.production? ? 'http://acetheyellowdog.com' : 'http://localhost:3000'
+  OmniAuth.config.full_host = Rails.env.production? ? 'http://www.acetheyellowdog.com' : 'http://localhost:3000'
 end
